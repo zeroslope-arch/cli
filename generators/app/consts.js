@@ -1,0 +1,20 @@
+module.exports = {
+    REPO_MS_DOTNET: 'https://github.com/zeroslope-arch/zeroslope-dotnet-6',
+    REPO_SL_DOTNET: 'https://github.com/zeroslope-arch/zeroslope-dotnet-serverless',
+    REPO_MS_NODE: 'https://github.com/zeroslope-arch/zeroslope-node',
+    REPO_SL_NODE: 'https://github.com/zeroslope-arch/zeroslope-node-serverless',
+    REPO_FE_NEXTJS: 'https://github.com/zeroslope-arch/zeroslope-nextjs-react-typescript-scss',
+    REPO_FE_REACT: 'https://github.com/zeroslope-arch/zeroslope-react',
+    REPO_FE_ANGULAR: 'https://github.com/zeroslope-arch/zeroslope-angular',
+    OPTIONS_FRAMEWORKS: ['Javascript/Typescript', 'Dotnet', 'GoLang', 'Java'],
+    OPTIONS_CLOUDPROVIDER: ['AWS', 'Azure', 'GCP', 'None'],
+    OPTIONS_MONOREPO: ['Monorepo', 'Repo per Project'],
+    OPTIONS_ARCHITECTURE: ['Serverless', 'Microservices', 'Hybrid'],
+    DEFAULT_PROJECTNAME: 'SAMPLE',
+    DEFAULT_FRAMEWORKS: 'Dotnet',
+    DEFAULT_MONOREPO: 'Monorepo',
+    DEFAULT_CLOUDPROVIDER: ['AWS'],
+    DEFAULT_BACKEND: true,
+    DEFAULT_FRONTEND: true,
+    DEFAULT_ARCHITECTURE: 'Microservices'
+}
