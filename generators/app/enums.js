@@ -1,0 +1,21 @@
+module.exports = {
+    NONE: 'None',
+    REACT: 'React',
+    NEXTJS: 'NextJS',
+    ANGULAR: 'Angular',
+    NODE: 'Javascript/Typescript',
+    NODE_JS: 'Javascript',
+    NODE_TS: 'Typescript',
+    DOTNET_SIX: 'Dotnet (.net6)',
+    DOTNET_CORE: 'Dotnet (Core)',
+    GOLANG: 'GoLang',
+    JAVA: 'Java 8',
+    MONOREPO: 'Monorepo',
+    SERVERLESS: 'Serverless',
+    MICROSERVICES: 'Microservices',
+    AWS: 'Aws',
+    AZURE: 'Azure',
+    GCP: 'Google Cloud',
+    MONOREPO: 'Monorepo',
+    REPOPERPROJECT: 'Repo per project'
+};
