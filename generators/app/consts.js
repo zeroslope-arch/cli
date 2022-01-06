@@ -4,9 +4,10 @@ module.exports = {
     // Repos
     REPO_MS_DOTNET_SIX: 'https://github.com/zeroslope-arch/zeroslope-dotnet-6',
     REPO_MS_DOTNET_CORE: 'https://github.com/zeroslope-arch/zeroslope-dotnet-6',
-    REPO_SL_DOTNET: 'https://github.com/zeroslope-arch/zeroslope-dotnet-serverless',
+    REPO_SL_DOTNET_CORE: 'https://github.com/zeroslope-arch/zeroslope-dotnet-serverless',
     REPO_MS_NODE: 'https://github.com/zeroslope-arch/zeroslope-node',
     REPO_MS_GOLANG: 'https://github.com/zeroslope-arch/zeroslope-golang',
+    REPO_MS_JAVA: 'https://github.com/zeroslope-arch/zeroslope-java',
     REPO_SL_NODE: 'https://github.com/zeroslope-arch/zeroslope-node-serverless',
     REPO_FE_NEXTJS: 'https://github.com/zeroslope-arch/zeroslope-nextjs-react-typescript-scss',
     REPO_FE_REACT: 'https://github.com/zeroslope-arch/zeroslope-react',

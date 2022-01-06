@@ -56,5 +56,17 @@ module.exports = {
       message: 'Please enter the domains you want to use as infrastructure abstraction. (comma delimited, no spaces)',
       filter: _createArray
     },
+    {
+      type: 'input',
+      name: 'functions',
+      message: 'Please enter the function names you wish to start with. (comma delimited, no spaces)',
+      filter: _createArray
+    },
+    {
+      type: 'confirm',
+      name: 'saveAsRoot',
+      message: 'Create in root of this directory or inside a folder?',
+      default: false
+    },
   ]
 };

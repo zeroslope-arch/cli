@@ -39,8 +39,6 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    // Write the files here ...
-    // console.log('\n#DEBUG# State: ', this.props);
     this.log('\nStarting ...\n');
     this._setupDirectory();
     this._setupFrontend();
@@ -56,7 +54,7 @@ module.exports = class extends Generator {
   }
 
   _setupFrontend = () => {
-    if (this.props.frontend !== ENUMS.NONE) {
+    if (this.props.frontend !== ENUMS.NONE && this.props.frontend !== ENUMS.NONE) {
       this.log(`Setting up: Website ...`);
       var dest = `./${this.props.name}/website/`;
       this._createDirectory(dest);
@@ -87,36 +85,12 @@ module.exports = class extends Generator {
         var dest = `./${this.props.name}/functions/${domain}`;
         this._createDirectory(dest);
         switch (this.props.backend) {
-          // case ENUMS.DOTNET_SIX:
-          //   this.log(`  ├─── Cloning domain (${domain}): ${consts.REPO_MS_DOTNET_SIX} ...`);
-          //   this._saveFilesFromRepo(consts.REPO_MS_DOTNET_SIX, dest);
-          //   this.log(`  └─── Installing: nuget dependencies ...`);
-          //   this._installDeps_Nuget(dest);
-          //   break;
           case ENUMS.DOTNET_CORE:
-            this.log(`  ├─── Cloning domain (${domain}): ${consts.REPO_SL_DOTNET_CORE} ...`);
-            this._saveFilesFromRepo(consts.REPO_SL_DOTNET_CORE, dest);
-            this.log(`  └─── Installing: nuget dependencies ...`);
-            this._installDeps_Nuget(dest);
+            this._cloneBackend(consts.REPO_SL_DOTNET_CORE, dest, domain, this._installDeps_Nuget);
             break;
           case ENUMS.NODE:
-            this.log(`  ├─── Cloning domain (${domain}): ${consts.REPO_SL_NODE} ...`);
-            this._saveFilesFromRepo(consts.REPO_SL_NODE, dest);
-            this.log(`  └─── Installing: npm dependencies ...`);
-            this._installDeps_Npm(dest);
+            this._cloneBackend(consts.REPO_SL_NODE, dest, domain, this._installDeps_Npm);
             break;
-          // case ENUMS.JAVA:
-          //   this.log(`  ├─── Cloning domain (${domain}): ${consts.REPO_MS_GOLANG} ...`);
-          //   this._saveFilesFromRepo(consts.REPO_MS_GOLANG, dest);
-          //   this.log(`  └─── Installing: mvn dependencies ...`);
-          //   this._installDeps_Java(dest);
-          //   break;
-          // case ENUMS.GOLANG:
-          //   this.log(`  ├─── Cloning domain (${domain}): ${consts.REPO_MS_GOLANG} ...`);
-          //   this._saveFilesFromRepo(consts.REPO_MS_GOLANG, dest);
-          //   this.log(`  └─── Installing: go dependencies ...`);
-          //   this._installDeps_Go(dest);
-          //   break;
         }
       });
     }
@@ -131,34 +105,19 @@ module.exports = class extends Generator {
         this._createDirectory(dest);
         switch (this.props.backend) {
           case ENUMS.DOTNET_SIX:
-            this.log(`  ├─── Cloning domain (${domain}): ${consts.REPO_MS_DOTNET_SIX} ...`);
-            this._saveFilesFromRepo(consts.REPO_MS_DOTNET_SIX, dest);
-            this.log(`  └─── Installing: nuget dependencies ...`);
-            this._installDeps_Nuget(dest);
+            this._cloneBackend(consts.REPO_MS_DOTNET_SIX, dest, domain, this._installDeps_Nuget);
             break;
           case ENUMS.DOTNET_CORE:
-            this.log(`  ├─── Cloning domain (${domain}): ${consts.REPO_MS_DOTNET_CORE} ...`);
-            this._saveFilesFromRepo(consts.REPO_MS_DOTNET_CORE, dest);
-            this.log(`  └─── Installing: nuget dependencies ...`);
-            this._installDeps_Nuget(dest);
+            this._cloneBackend(consts.REPO_MS_DOTNET_CORE, dest, domain, this._installDeps_Nuget);
             break;
           case ENUMS.NODE:
-            this.log(`  ├─── Cloning domain (${domain}): ${consts.REPO_MS_NODE} ...`);
-            this._saveFilesFromRepo(consts.REPO_MS_NODE, dest);
-            this.log(`  └─── Installing: npm dependencies ...`);
-            this._installDeps_Npm(dest);
+            this._cloneBackend(consts.REPO_MS_NODE, dest, domain, this._installDeps_Npm);
             break;
           case ENUMS.JAVA:
-            this.log(`  ├─── Cloning domain (${domain}): ${consts.REPO_MS_GOLANG} ...`);
-            this._saveFilesFromRepo(consts.REPO_MS_GOLANG, dest);
-            this.log(`  └─── Installing: mvn dependencies ...`);
-            this._installDeps_Java(dest);
+            this._cloneBackend(consts.REPO_MS_JAVA, dest, domain, this._installDeps_Java);
             break;
           case ENUMS.GOLANG:
-            this.log(`  ├─── Cloning domain (${domain}): ${consts.REPO_MS_GOLANG} ...`);
-            this._saveFilesFromRepo(consts.REPO_MS_GOLANG, dest);
-            this.log(`  └─── Installing: go dependencies...`);
-            this._installDeps_Go(dest);
+            this._cloneBackend(consts.REPO_MS_GOLANG, dest, domain, this._installDeps_Go);
             break;
         }
       });
@@ -166,7 +125,28 @@ module.exports = class extends Generator {
   }
 
   _setupCloud = () => {
-    
+    if (this.props.cloud !== ENUMS.NONE) {
+      this.log(`Setting up: Infrastructure ...`);
+      this._createDirectory(`./${this.props.name}/infrastructure`);
+      switch (this.props.cloud) {
+        case ENUMS.AWS:
+          // Test
+          break;
+        case ENUMS.AZURE:
+          // Test
+          break;
+        case ENUMS.GCP:
+          // Test
+          break;
+      }
+    }
+  }
+
+  _cloneBackend = (repo, destination, domain, callback) => {
+    this.log(`  ├─── Cloning domain (${domain}): ${repo} ...`);
+    this._saveFilesFromRepo(repo, destination);
+    this.log(`  └─── Installing: dependencies...`);
+    //callback(destination);
   }
 
   _saveFilesFromRepo = (repo, destination) => {
@@ -179,31 +159,31 @@ module.exports = class extends Generator {
   }
 
   _installDeps_Npm = (destination) => {
-    // this.spawnCommand('npm', ['install'], {
-    //   cwd: destination,
-    //   stdio: [process.stderr]
-    // });
+    this.spawnCommand('npm', ['install'], {
+      cwd: destination,
+      stdio: [process.stderr]
+    });
   }
 
   _installDeps_Nuget = (destination) => {
-    // this.spawnCommand('dotnet', ['restore'], {
-    //   cwd: destination,
-    //   stdio: [process.stderr]
-    // });
+    this.spawnCommand('dotnet', ['restore'], {
+      cwd: destination,
+      stdio: [process.stderr]
+    });
   }
 
   _installDeps_Java = (destination) => {
-    // this.spawnCommand('mvn', ['-U clean install'], {
-    //   cwd: destination,
-    //   stdio: [process.stderr]
-    // });
+    this.spawnCommand('mvn', ['-U clean install'], {
+      cwd: destination,
+      stdio: [process.stderr]
+    });
   }
 
   _installDeps_Go = (destination) => {
-    // this.spawnCommand('', [''], {
-    //   cwd: destination,
-    //   stdio: [process.stderr]
-    // });
+    this.spawnCommand('go', ['mod vendor'], {
+      cwd: destination,
+      stdio: [process.stderr]
+    });
   }
 
   _createDirectory = (path) => {
