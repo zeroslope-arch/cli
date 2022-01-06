@@ -12,6 +12,9 @@ module.exports = {
     REPO_FE_NEXTJS: 'https://github.com/zeroslope-arch/zeroslope-nextjs-react-typescript-scss',
     REPO_FE_REACT: 'https://github.com/zeroslope-arch/zeroslope-react',
     REPO_FE_ANGULAR: 'https://github.com/zeroslope-arch/zeroslope-angular',
+    REPO_INF_AWS: 'https://github.com/zeroslope-arch/zeroslope-infra-aws',
+    REPO_INF_AZURE: '',
+    REPO_INF_GCP: '',
     // Options
     OPTIONS_BACKEND: [
         ENUMS.NODE, 
@@ -42,11 +45,10 @@ module.exports = {
         ENUMS.MICROSERVICES
     ],
     // Defaults
-    DEFAULT_PROJECTNAME: 'Sample Project',
+    DEFAULT_PROJECTNAME: 'SampleProject',
     DEFAULT_BACKEND: ENUMS.DOTNET,
     DEFAULT_FRONTEND: ENUMS.NEXTJS,
     DEFAULT_MONOREPO: ENUMS.MONOREPO,
     DEFAULT_CLOUDPROVIDER: ENUMS.AWS,
     DEFAULT_ARCHITECTURE: ENUMS.MICROSERVICES,
-    
 }
