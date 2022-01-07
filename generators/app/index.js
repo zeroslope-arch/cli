@@ -46,10 +46,11 @@ module.exports = class extends Generator {
     this._setupServerless();
     this._setupCloud();
     this.log('\n\nThank you! You are ready to go!');
+    process.exit();
   }
 
   _setupDirectory = () => {
-    this.log(`Setting up directory: ${chalk.yellow(this.props.name)} ...`);
+    this.log(`Setting up project: ${chalk.yellow(this.props.name)} ...`);
     this._createDirectory(`./${this.props.name}`);
   }
 
@@ -127,16 +128,18 @@ module.exports = class extends Generator {
   _setupCloud = () => {
     if (this.props.cloud !== ENUMS.NONE) {
       this.log(`Setting up: Infrastructure ...`);
-      this._createDirectory(`./${this.props.name}/infrastructure`);
+      var dest = `./${this.props.name}/infrastructure`;
+      this._createDirectory(dest);
+      this.log(`  └─── Cloning infrastructure ...`);
       switch (this.props.cloud) {
         case ENUMS.AWS:
-          // Test
+          this._saveFilesFromRepo(consts.REPO_INF_AWS, dest);
           break;
         case ENUMS.AZURE:
-          // Test
+          this._saveFilesFromRepo(consts.REPO_INF_AZURE, dest);
           break;
         case ENUMS.GCP:
-          // Test
+          this._saveFilesFromRepo(consts.REPO_INF_GCP, dest);
           break;
       }
     }
@@ -146,7 +149,7 @@ module.exports = class extends Generator {
     this.log(`  ├─── Cloning domain (${domain}): ${repo} ...`);
     this._saveFilesFromRepo(repo, destination);
     this.log(`  └─── Installing: dependencies...`);
-    //callback(destination);
+    callback(destination);
   }
 
   _saveFilesFromRepo = (repo, destination) => {

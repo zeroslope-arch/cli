@@ -13,8 +13,8 @@ module.exports = {
     REPO_FE_REACT: 'https://github.com/zeroslope-arch/zeroslope-react',
     REPO_FE_ANGULAR: 'https://github.com/zeroslope-arch/zeroslope-angular',
     REPO_INF_AWS: 'https://github.com/zeroslope-arch/zeroslope-infra-aws',
-    REPO_INF_AZURE: '',
-    REPO_INF_GCP: '',
+    REPO_INF_AZURE: 'https://github.com/zeroslope-arch/zeroslope-infra-azure',
+    REPO_INF_GCP: 'https://github.com/zeroslope-arch/zeroslope-infra-gcp',
     // Options
     OPTIONS_BACKEND: [
         ENUMS.NODE, 

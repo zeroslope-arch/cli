@@ -18,6 +18,7 @@ yo zeroslope
 ## Run this locally
 
 ```bash
+npm i
 npm link
 yo zeroslope
 ```
